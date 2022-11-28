@@ -1,0 +1,27 @@
+#!/bin/bash
+script_name=$1
+mt=$2
+
+if [ ! $mt ]; then
+	mt=8
+fi
+if [ ! -d "logfiles" ]; then
+	mkdir logfiles
+fi
+if [ ! -d "output" ]; then
+	mkdir output
+fi
+if [ ! -d "netlists" ]; then
+	mkdir netlists
+fi
+
+if [ $script_name ]; then
+	script_name=${script_name//.scs/}
+	aps +log ./logfiles/$script_name.log -outdir ./output/$script_name/ -format psfbin +mt=$mt +mtmode=active -64 ./netlists/$script_name.scs
+	# aps +log ./logfiles/$script_name.log -raw ./output/%C/%C -format psfbin +mt=$mt +mtmode=active -64 ./netlists/$script_name.scs
+else
+	echo run [script name] [mt]
+	echo "    script_name.scs    --Don't input '.scs'"
+	echo "    mt    --thread num"
+fi
+

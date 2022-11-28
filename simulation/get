@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ ! -d "OUTPUTs" ]; then
+	mkdir OUTPUTs
+fi
+
+for file in `ls ./output`
+do
+	echo "copy "$file
+	# cp ./output/$file/$file".raw"/tran.tran.tran ./OUTPUTs/$file
+	ln -s ../output/$file/$file".raw"/tran.tran.tran ./OUTPUTs/$file
+done
