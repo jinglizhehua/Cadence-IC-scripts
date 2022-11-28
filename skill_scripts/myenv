@@ -1,0 +1,2 @@
+ui	showOptionForms	boolean	nil
+cdsLibManager.main	showCategoriesOn	boolean	t
